@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../service/service.service';
 import { Subcategoria } from '../models/subcategoria';
+import { Detalle } from '../models/detalle';
 
 @Component({
   selector: 'app-categoria',
@@ -12,6 +13,7 @@ export class CategoriaComponent implements OnInit {
   subcategorias: any = [];
   subcategoria: Subcategoria;
   categorias:any=[];
+  detalleSubs:any=[];
   cod_categoria:string
   action: string;
 
@@ -22,6 +24,7 @@ export class CategoriaComponent implements OnInit {
 
   ngOnInit() {
     this.getCategorias();
+
     this.subcategoria = new Subcategoria();
   }
 
@@ -67,10 +70,25 @@ export class CategoriaComponent implements OnInit {
       );
       this.getSubcategorias() 
      }
+
   cancel() {
     this.action = 'Agregar';
     delete this.subcategoria;
     this.ngOnInit();
+    delete this.detalleSubs;
+
+  }
+
+  detalle(id: string){
+    this.service.getSubcategoriaDetalle(id)
+      .subscribe(
+        res => {
+          this.detalleSubs=res;
+          this.ngOnInit();
+        },
+        err => console.error(err)
+      );
+
   }
 
 

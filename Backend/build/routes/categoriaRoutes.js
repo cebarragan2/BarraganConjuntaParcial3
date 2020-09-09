@@ -10,6 +10,7 @@ class CategoriaRouter {
     config() {
         this.router.get('/', categoriaControlers_1.categoríaController.getAll);
         this.router.get('/:id', categoriaControlers_1.categoríaController.getOne);
+        this.router.get('/detalle/:id', categoriaControlers_1.categoríaController.getOneRegi);
         this.router.post('/', categoriaControlers_1.categoríaController.create);
         this.router.put('/:id', categoriaControlers_1.categoríaController.update);
         this.router.delete('/:id', categoriaControlers_1.categoríaController.delete);

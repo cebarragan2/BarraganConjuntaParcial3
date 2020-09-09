@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Subcategoria } from '../models/subcategoria';
+import { Detalle } from '../models/detalle';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,9 @@ export class ServiceService {
 
   getSubcategoria(id: string) {
     return this.http.get(`${this.API_URI}/subcategorias/${id}`);
+  }
+  getSubcategoriaDetalle(id: string) {
+    return this.http.get(`${this.API_URI}/subcategorias/detalle/${id}`);
   }
 
   deleteSubcategoria(id: string) {

@@ -21,6 +21,16 @@ class CategoríaController {
             res.json(categoria);
         });
     }
+    getOneRegi(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const categoria = yield database_1.default.query('SELECT * FROM subcategoria INNER JOIN categoria ON categoria.COD_CATEGORIA=subcategoria.COD_CATEGORIA WHERE subcategoria.COD_SUB_CATEGORIA=?', [id]);
+            if (categoria.length > 0) {
+                return res.json(categoria);
+            }
+            res.status(404).json({ text: "categoriao no registrado" });
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

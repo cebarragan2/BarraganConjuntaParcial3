@@ -7,7 +7,17 @@ class CategoríaController {
         const categoria = await pool.query('SELECT * FROM categoria');
         res.json(categoria);
     }
-    
+
+    public async getOneRegi(req: Request, res: Response): Promise<any> {
+        const { id } = req.params;
+        const categoria = await pool.query('SELECT * FROM subcategoria INNER JOIN categoria ON categoria.COD_CATEGORIA=subcategoria.COD_CATEGORIA WHERE subcategoria.COD_SUB_CATEGORIA=?', [id]);
+        if (categoria.length > 0) {
+            return res.json(categoria);
+        }
+        res.status(404).json({ text: "categoriao no registrado" });
+    }
+   
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const categoria = await pool.query('SELECT * FROM subcategoria INNER JOIN categoria ON categoria.COD_CATEGORIA=subcategoria.COD_CATEGORIA WHERE categoria.COD_CATEGORIA=?', [id]);
@@ -16,6 +26,7 @@ class CategoríaController {
         }
         res.status(404).json({ text: "categoriao no registrado" });
     }
+
     public async create(req: Request, res: Response): Promise<any> {
         console.log(req.body);
         const result = await pool.query('INSERT INTO subcategoria set ?', [req.body]);

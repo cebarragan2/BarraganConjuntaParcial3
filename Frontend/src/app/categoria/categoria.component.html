@@ -25,7 +25,7 @@
         <td>{{subcategoria.NOMBRE}}</td>
         <td>{{subcategoria.FECHA_CREACION | date: 'dd/MM/yyyy'}}</td>
         <td>
-          <button type="button" (click)="update(subcategoria)" class="btn btn-link">Modificar</button>
+          <button type="button" (click)="detalle(subcategoria.COD_SUB_CATEGORIA)" class="btn btn-link">Detalle</button>
           <button type="button" (click)="delete(subcategoria.COD_SUB_CATEGORIA)" class="btn btn-link">Eliminar</button>
         </td>
       </tr>
@@ -34,14 +34,16 @@
 </div>
 
 <div class="container">
+  <div class="row">
+    <div class="col-8">
     <div class="container py-3">
       <form (ngSubmit)="saveSubcategoria()">
-        <div class="col-4 form-group">
+        <div class="col-6 form-group">
           <label>COD_SUBCATEGORIA</label>
           <input type="text" class="form-control" id="COD_SUB_CATEGORIA" required 
             name="COD_SUB_CATEGORIA"  [(ngModel)]="subcategoria.COD_SUB_CATEGORIA">
         </div>
-        <div class="col-4 form-group">
+        <div class="col-6 form-group">
           <label>Categoría</label>
           <select required [(ngModel)]="subcategoria.COD_CATEGORIA" class="form-control" name="categoria">
             <option *ngFor="let categoria of 
@@ -50,26 +52,54 @@
             </option>
           </select>
         </div>
-        <div class="col-4 form-group">
+        <div class="col-6 form-group">
           <label>NOMBRE</label>
           <input type="text" class="form-control" id="NOMBRE" required 
             name="NOMBRE"  [(ngModel)]="subcategoria.NOMBRE">
         </div>
         
-        <div class="col-4 form-group">
+        <div class="col-6 form-group">
           <label>DESCRIPCION </label>
           <input type="text" class="form-control" id="DESCRIPCION " required [(ngModel)]="subcategoria.DESCRIPCION " name="DESCRIPCION ">
         </div>
-        <div class="col-4 form-group">
+        <div class="col-6 form-group">
           <label>Fecha</label>
           <input type="date" class="form-control" id="FECHA_CREACION" required [(ngModel)]="subcategoria.FECHA_CREACION"
             name="FECHA_CREACION">
         </div>
-        <div class="col-4 form-group">
+        <div class="col-6 form-group">
           <button type="submit" class="btn btn-success">{{action}}</button>
           <button type="button"  (click)="cancel()" class="btn btn-secondary">Cancelar</button>
 
         </div>
       </form>
+    </div>
+    </div>
+    <div class="col-4">
+
+      <div class="container py-3 table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table" >
+          <thead>
+            <tr class="text-center">
+              <th scope="col">DETALLE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detalleSub of detalleSubs" class="text-center">
+              <th scope="row">Subcategría:{{detalleSub.COD_SUB_CATEGORIA}} <br>
+                Nombre:{{detalleSub.NOMBRE}} <br>  
+                Fecha: {{detalleSub.FECHA_CREACION | date: 'dd/MM/yyyy'}} <br>
+                IdCategoria: {{detalleSub.COD_CATEGORIA}} <br>
+                Descripción: {{detalleSub.DESCRIPCION}} 
+                
+              
+              </th>
+             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+   
     </div>
   </div>
