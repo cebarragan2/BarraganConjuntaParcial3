@@ -35,7 +35,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-8">
+    <div class="col-6">
     <div class="container py-3">
       <form (ngSubmit)="saveSubcategoria()">
         <div class="col-6 form-group">
@@ -90,11 +90,11 @@
                 Nombre:{{detalleSub.NOMBRE}} <br>  
                 Fecha: {{detalleSub.FECHA_CREACION | date: 'dd/MM/yyyy'}} <br>
                 IdCategoria: {{detalleSub.COD_CATEGORIA}} <br>
-                Descripción: {{detalleSub.DESCRIPCION}} 
-                
-              
+                Desc Cat: {{detalleSub.DESCRIPCIONCAT}}  <br>
+                Desc Subc: {{detalleSub.DESCRIPCION}}
+                <br><br>
+                <button type="button"  (click)="cancel()" class="btn btn-secondary">Cerrar</button>
               </th>
-             
             </tr>
           </tbody>
         </table>

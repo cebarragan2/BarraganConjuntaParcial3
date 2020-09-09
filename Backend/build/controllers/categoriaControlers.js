@@ -24,7 +24,7 @@ class CategoríaController {
     getOneRegi(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const categoria = yield database_1.default.query('SELECT * FROM subcategoria INNER JOIN categoria ON categoria.COD_CATEGORIA=subcategoria.COD_CATEGORIA WHERE subcategoria.COD_SUB_CATEGORIA=?', [id]);
+            const categoria = yield database_1.default.query('SELECT subcategoria.COD_SUB_CATEGORIA, subcategoria.COD_CATEGORIA, subcategoria.NOMBRE, subcategoria.DESCRIPCION, subcategoria.FECHA_CREACION, categoria.DESCRIPCION AS DESCRIPCIONCAT FROM subcategoria INNER JOIN categoria ON categoria.COD_CATEGORIA=subcategoria.COD_CATEGORIA WHERE subcategoria.COD_SUB_CATEGORIA=?', [id]);
             if (categoria.length > 0) {
                 return res.json(categoria);
             }
