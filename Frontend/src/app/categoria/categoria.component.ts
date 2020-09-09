@@ -75,7 +75,8 @@ export class CategoriaComponent implements OnInit {
 
 
   saveSubcategoria() {
-
+  
+    console.log(this.subcategoria);
     if (this.action == 'Agregar') {
       this.service.createSubcategoria(this.subcategoria)
         .subscribe(

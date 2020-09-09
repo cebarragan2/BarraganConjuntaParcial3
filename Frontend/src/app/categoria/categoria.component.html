@@ -35,25 +35,40 @@
 
 <div class="container">
     <div class="container py-3">
-      <form (ngSubmit)="saveProduct()">
+      <form (ngSubmit)="saveSubcategoria()">
         <div class="col-4 form-group">
-          <label>Descripción</label>
-          <input type="text" class="form-control" id="descripcion" required 
-            name="descripcion"  [(ngModel)]="subcategoria.descripcion">
+          <label>COD_SUBCATEGORIA</label>
+          <input type="text" class="form-control" id="COD_SUB_CATEGORIA" required 
+            name="COD_SUB_CATEGORIA"  [(ngModel)]="subcategoria.COD_SUB_CATEGORIA">
         </div>
         <div class="col-4 form-group">
-          <label>Fecha Expiración</label>
-          <input type="date" class="form-control" id="fecha_expiracion" required [(ngModel)]="subcategoria.fecha_expiracion"
-            name="fecha_expiracion">
+          <label>Categoría</label>
+          <select required [(ngModel)]="subcategoria.COD_CATEGORIA" class="form-control" name="categoria">
+            <option *ngFor="let categoria of 
+            categorias" [value]="categoria.COD_CATEGORIA">
+              {{categoria.DESCRIPCION}}
+            </option>
+          </select>
         </div>
         <div class="col-4 form-group">
-          <label>Precio</label>
-          <input type="number" class="form-control" id="precio" required [(ngModel)]="subcategoria.precio" name="precio">
+          <label>NOMBRE</label>
+          <input type="text" class="form-control" id="NOMBRE" required 
+            name="NOMBRE"  [(ngModel)]="subcategoria.NOMBRE">
+        </div>
+        
+        <div class="col-4 form-group">
+          <label>DESCRIPCION </label>
+          <input type="text" class="form-control" id="DESCRIPCION " required [(ngModel)]="subcategoria.DESCRIPCION " name="DESCRIPCION ">
+        </div>
+        <div class="col-4 form-group">
+          <label>Fecha</label>
+          <input type="date" class="form-control" id="FECHA_CREACION" required [(ngModel)]="subcategoria.FECHA_CREACION"
+            name="FECHA_CREACION">
         </div>
         <div class="col-4 form-group">
           <button type="submit" class="btn btn-success">{{action}}</button>
           <button type="button"  (click)="cancel()" class="btn btn-secondary">Cancelar</button>
-  
+
         </div>
       </form>
     </div>

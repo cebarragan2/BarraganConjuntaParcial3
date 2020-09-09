@@ -16,11 +16,10 @@ class CategoríaController {
         }
         res.status(404).json({ text: "categoriao no registrado" });
     }
-
     public async create(req: Request, res: Response): Promise<any> {
+        console.log(req.body);
         const result = await pool.query('INSERT INTO subcategoria set ?', [req.body]);
         res.json(result);
-
     }
     
     public async update(req: Request, res: Response): Promise<any> {
