@@ -42,14 +42,14 @@ class CategoríaController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const categoria = req.body;
-            const result = yield database_1.default.query('UPDATE categoriao set ? WHERE codigo = ?', [categoria, id]);
+            const result = yield database_1.default.query('UPDATE subcategoria set ? WHERE codigo = ?', [categoria, id]);
             res.json(result);
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const result = yield database_1.default.query('DELETE FROM subcategoria WHERE codigo = ?', [id]);
+            const result = yield database_1.default.query('DELETE FROM subcategoria WHERE COD_SUB_CATEGORIA = ?', [id]);
             res.json(result);
         });
     }

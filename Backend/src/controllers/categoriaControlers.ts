@@ -25,13 +25,13 @@ class CategoríaController {
     public async update(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const categoria = req.body;
-        const result =await pool.query('UPDATE categoriao set ? WHERE codigo = ?', [categoria, id]);
+        const result =await pool.query('UPDATE subcategoria set ? WHERE codigo = ?', [categoria, id]);
         res.json(result);
     }
 
     public async delete(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
-        const result =await pool.query('DELETE FROM subcategoria WHERE codigo = ?', [id]);
+        const result =await pool.query('DELETE FROM subcategoria WHERE COD_SUB_CATEGORIA = ?', [id]);
         res.json(result);
     }
 }

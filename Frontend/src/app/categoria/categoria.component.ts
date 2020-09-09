@@ -45,7 +45,7 @@ export class CategoriaComponent implements OnInit {
   }
 
   listarcategoria(){
-    delete this.subcategorias;
+  delete this.subcategorias;
   this.getSubcategorias()
   }
 
@@ -62,11 +62,11 @@ export class CategoriaComponent implements OnInit {
         res => {
           console.log(res);
           this.ngOnInit();
-
         },
         err => console.error(err)
-      )
-  }
+      );
+      this.getSubcategorias() 
+     }
   cancel() {
     this.action = 'Agregar';
     delete this.subcategoria;
