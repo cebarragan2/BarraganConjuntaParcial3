@@ -64,11 +64,11 @@ export class CategoriaComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+            this.getSubcategorias()
           this.ngOnInit();
         },
         err => console.error(err)
       );
-      this.getSubcategorias() 
      }
 
   cancel() {
@@ -99,6 +99,8 @@ export class CategoriaComponent implements OnInit {
       this.service.createSubcategoria(this.subcategoria)
         .subscribe(
           res => {
+            this.subcategoria.COD_CATEGORIA=this.cod_categoria;
+            this.getSubcategorias()
             this.ngOnInit();
 
           },
